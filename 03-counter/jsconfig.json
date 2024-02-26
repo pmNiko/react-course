@@ -1,0 +1,12 @@
+{
+  // Linea para que vscode infiera en los matchers de Jest
+  // "typeAcquisition": {
+  //   "include": [ "jest" ]
+  // },
+  // Admite la importación "import" - "from"
+  "compilerOptions": {
+    // "module": "ESNext",
+    // "target": "ES6"
+  },
+  // "exclude": ["node_modules"]
+}
