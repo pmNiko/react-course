@@ -5,6 +5,8 @@ import {useHandleCategories} from './hooks'
 export const GifExpertApp = () => {
   const {categories, onAddCategory, onRemoveCategory} = useHandleCategories();
 
+  console.log(categories);
+
   return (
     <>      
       <h1>GifExpertApp</h1>
