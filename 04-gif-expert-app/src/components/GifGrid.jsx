@@ -1,13 +1,25 @@
-export const GifGrid = ({category}) => {
+import { GifItem } from './GifItem';
+import { RemoveGifButton } from './RemoveGifButton';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
-  const getGifs = () => {
-    const url 
-  }
+export const GifGrid = ({category, onRemoveCategory}) => {
+  const {images, loading, hasError} = useFetchGifs(category);
 
   return (
     <>
       <h3>{category}</h3>
-      <p>Hola Mundo!</p>
+
+      { loading && <p>Cargando...</p> }
+
+      { !!hasError && <RemoveGifButton removeCategory={onRemoveCategory} /> }
+
+      <div className='card-grid' >
+        {
+          images.map(image => (
+            <GifItem key={image.id} {...image} />
+          ))
+        }
+      </div>
     </>
   )
 }

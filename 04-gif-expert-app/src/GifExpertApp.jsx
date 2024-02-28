@@ -1,24 +1,25 @@
-import { useState } from 'react';
-import {AddCategory} from './components/AddCategory'
+import { AddCategory } from './components/AddCategory';
 import { GifGrid } from './components/GifGrid';
+import {useHandleCategories} from './hooks'
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['One ponch', 'Dragon Ball'])
-
-  const onAddCategory = (newCategory) => {
-    if(categories.some(cat => cat.toLowerCase() === newCategory.toLowerCase())) return;
-    setCategories( prev => ([ newCategory, ...prev ]) )
-  }
+  const {categories, onAddCategory, onRemoveCategory} = useHandleCategories();
 
   return (
     <>      
       <h1>GifExpertApp</h1>
 
-      <AddCategory onAddCategory={onAddCategory} />     
+      <AddCategory 
+        onAddCategory={onAddCategory} 
+      />     
 
       {
         categories.map((category, i) => 
-          <GifGrid key={category+i} category={category} />
+          <GifGrid 
+            key={category+i} 
+            category={category} 
+            onRemoveCategory={() => onRemoveCategory(category)} 
+          />
         )
       }
     </>
