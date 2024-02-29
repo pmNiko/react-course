@@ -24,7 +24,9 @@ export const useFetchGifs = (category) => {
   }
 
 
-  useEffect(() => loadGifs, [])
+  useEffect(() => {
+    loadGifs()
+  }, [])
   
   return {
     images,

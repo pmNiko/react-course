@@ -1,6 +1,7 @@
-import { GifItem } from './GifItem';
-import { RemoveGifButton } from './RemoveGifButton';
-import { useFetchGifs } from '../hooks/useFetchGifs';
+
+import { useFetchGifs } from '../hooks/useFetchGifs.js';
+import {GifItem} from './GifItem';
+import PropTypes from 'prop-types';
 
 export const GifGrid = ({category, onRemoveCategory}) => {
   const {images, loading, hasError} = useFetchGifs(category);
@@ -9,7 +10,7 @@ export const GifGrid = ({category, onRemoveCategory}) => {
     <>
       <h3>{category}</h3>
 
-      { loading && <p>Cargando...</p> }
+      { loading && <h2>Cargando...</h2> }
 
       { !!hasError && <RemoveGifButton removeCategory={onRemoveCategory} /> }
 
@@ -22,4 +23,10 @@ export const GifGrid = ({category, onRemoveCategory}) => {
       </div>
     </>
   )
+}
+
+
+GifGrid.propTypes = {
+  category:           PropTypes.string.isRequired,
+  onRemoveCategory:   PropTypes.func.isRequired
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const useHandleCategories = () => {
-  const [categories, setCategories] = useState(['One ponch'])
+  const [categories, setCategories] = useState(['One Punch'])
 
   const onAddCategory = (newCategory) => {
     if(categories.some(cat => cat.toLowerCase() === newCategory.toLowerCase())) return;
@@ -10,6 +10,7 @@ export const useHandleCategories = () => {
 
   const onRemoveCategory = (categoryRemove) => {
     const categoriesDraft = categories.filter(cat => cat !== categoryRemove);
+    console.log(categoriesDraft);
     setCategories([...categoriesDraft]);
   }
 

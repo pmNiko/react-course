@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente <GifItem /> Snapshot del componente 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      alt="Valorant"
+      src="https://media2.giphy.com/media/CRAYdoKFzxPeqj6Ncg/giphy-downsized-medium.gif?cid=d3ecfa3ag70cq956flr6qw8ajvhv2l7jcwhj4xse5cvflu32&ep=v1_gifs_search&rid=giphy-downsized-medium.gif&ct=g"
+    />
+    <p>
+      Valorant
+    </p>
+  </div>
+</div>
+`;
