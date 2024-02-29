@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <RemoveGifButton/> El componente debe hacer match con el snapshopt 1`] = `
+<div>
+  <div
+    style="display: flex; align-items: center;"
+  >
+    <h3>
+      Este titulo no contiene Gifs!
+    </h3>
+    <button
+      style="background: red; color: white; height: 22px; width: 23px; font-size: 12px; border-color: transparent; margin-left: 10px; box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5); cursor: pointer;"
+    >
+      X
+    </button>
+  </div>
+</div>
+`;

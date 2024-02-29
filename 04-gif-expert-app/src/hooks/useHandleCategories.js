@@ -10,7 +10,6 @@ export const useHandleCategories = () => {
 
   const onRemoveCategory = (categoryRemove) => {
     const categoriesDraft = categories.filter(cat => cat !== categoryRemove);
-    console.log(categoriesDraft);
     setCategories([...categoriesDraft]);
   }
 

@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types'
+
 export const RemoveGifButton = ({removeCategory}) => {
   return (
     <div style={{display: 'flex', alignItems: 'center'}} >
-      <p>Este titulo no contiene Gifs!</p>
+      <h3>Este titulo no contiene Gifs!</h3>
       <button
         onClick={removeCategory} 
         style={{
@@ -11,4 +13,8 @@ export const RemoveGifButton = ({removeCategory}) => {
         }}>X</button>
     </div>
   )
+}
+
+RemoveGifButton.propTypes = {
+  removeCategory: PropTypes.func.isRequired
 }
