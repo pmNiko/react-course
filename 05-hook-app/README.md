@@ -1,8 +1,33 @@
-# React + Vite
+### Hook App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> ![info]
+> **Reducers**
+>
+> useReducer
+> 
+> Reducers
+> 
+> Teoría de un reducer
+> 
+> Aplicación de TODOs
+> 
+> CRUD local
+>   \_\_
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+> ![warning]
+> **Consideraciones**
+>
+> 1. No debe tener efectos secundarios
+> 
+> 2. No debe realizar tareas asincronas
+> 
+> 3. Debe de retornar siempre un nuevo estado
+> 
+> 4. No debe llamae al localStorage o sessionStorage
+> 
+> 5. No debe requerir más de una acción que puede tener un argumento
+>   \_\_
+
+
