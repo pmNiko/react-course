@@ -7,12 +7,24 @@ const initialState = {
     error: null
 }
 
+const localCache = {};
+
 export const useFetch = (url) => {
     const [state, setState] = useState(initialState);
 
     const setLoadingState = () => setState(initialState);
 
     const getFetch = async () => {    
+        if (!!localCache[url]) {
+            setState({
+                data: localCache[url],
+                isLoading: false,
+                hasError: false, 
+                error: null
+            })
+            return;
+        };
+
         setLoadingState();
         const resp = await fetch(url);
         // ?? sleep
@@ -27,11 +39,13 @@ export const useFetch = (url) => {
                     message: resp.statusText
                 }
             })
+
             return;
         }
-
+        
         const data = await resp.json();
         setState({ ...state, data, isLoading: false });    
+        localCache[url] = data; 
     } 
 
 

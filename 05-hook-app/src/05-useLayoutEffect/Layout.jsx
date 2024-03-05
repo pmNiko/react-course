@@ -1,10 +1,10 @@
 import { useFetch, useCounter} from "../hooks";
-import { LoadingMessage } from "./LoadingMessage";
-import { PokemonCard } from "./PokemonCard";
+import { LoadingMessage } from "../03-examples/LoadingMessage";
+import { PokemonCard } from "../03-examples/PokemonCard";
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon';
 
-export const MultipleCustomHooks = () => {
+export const Layout = () => {
   const {counter, increment, decrement, reset} = useCounter(1)
   const {data, isLoading} = useFetch(baseUrl + '/' + counter);  
 
