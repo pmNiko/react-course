@@ -4,7 +4,10 @@ import { TodoList } from "./TodoList";
 
 
 export const TodoApp = () => {
-    const { todos, onNewTodo, onDeleteTodo, onToggleTodo, count, pending } = useTodo();
+    const { 
+        todos, onNewTodo, onDeleteTodo, 
+        onToggleTodo, count, pending 
+    } = useTodo();
 
     return (
         <>
@@ -13,7 +16,11 @@ export const TodoApp = () => {
 
             <div className="row">
                 <div className="col-7">
-                    <TodoList todos={todos} onDeleteTodo={onDeleteTodo} onToggleTodo={onToggleTodo} />
+                    <TodoList 
+                        todos={todos} 
+                        onDeleteTodo={onDeleteTodo} 
+                        onToggleTodo={onToggleTodo} 
+                    />
                 </div>
 
                 <div className="col-5">

@@ -11,12 +11,12 @@ export const PokemonCard = ({id, name, sprites = [] }) => {
 
   return (
     <section style={{ height: 200, display: 'flex' }} >
-        <h2 ref={h2Ref} className='text-capitalize' > #{ id } - { name } </h2>
+        <h2 ref={h2Ref} className='text-capitalize' >#{ id } - { name }</h2>
 
-        <div>
+        <div aria-label='sprite-images' >
             {
                 sprites.map( sprite => (
-                    <img key={sprite} src={sprite} alt={sprite} />
+                    <img data-testid={sprite} key={sprite} src={sprite} alt={sprite} />
                 ) )
             }
         </div>

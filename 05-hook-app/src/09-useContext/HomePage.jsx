@@ -6,7 +6,10 @@ export const HomePage = () => {
 
     return (
         <>
-            <h1>HomePage <strong>{user?.name}</strong> </h1>
+            <h1>HomePage
+                <span aria-label="userId">{user?.id && `#${user.id}`}</span>
+                <strong aria-label="user">{user?.name}</strong> 
+            </h1>
             <hr />
 
             <p>Email del usuario logueado: {user?.email}</p>

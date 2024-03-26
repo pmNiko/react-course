@@ -1,12 +1,12 @@
-import { useFetch, useCounter} from "../hooks";
+import { useCounter, useFetch } from "../hooks";
 import { LoadingMessage } from "./LoadingMessage";
 import { PokemonCard } from "./PokemonCard";
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon';
 
 export const MultipleCustomHooks = () => {
-  const {counter, increment, decrement, reset} = useCounter(1)
-  const {data, isLoading} = useFetch(baseUrl + '/' + counter);  
+  const { counter, increment, decrement } = useCounter(1)
+  const { data, isLoading } = useFetch(baseUrl + '/' + counter);  
 
   return (
     <>
@@ -28,8 +28,20 @@ export const MultipleCustomHooks = () => {
             />
       }
 
-      <button className="btn btn-primary mt-2" onClick={() => decrement()} >Anterior</button>
-      <button className="btn btn-primary mt-2" onClick={() => increment()} >Siguiente</button>
+      <button 
+        className="btn btn-primary mt-2"
+        onClick={() => decrement()} 
+        disabled={isLoading}
+        >
+          Anterior
+      </button>
+      <button 
+        className="btn btn-primary mt-2" 
+        onClick={() => increment()} 
+        disabled={isLoading}
+        >
+          Siguiente
+      </button>
     </>
   )
 }

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { MainApp } from './09-useContext/MainApp'
 import './index.css'
+import { MultipleCustomHooks } from './03-examples/MultipleCustomHooks.jsx'
+import { TodoApp } from './08-reducer/TodoApp.jsx'
 
 
 
@@ -11,7 +13,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
-      <MainApp />
+      <TodoApp />
     </React.StrictMode>
   </BrowserRouter>
 )
