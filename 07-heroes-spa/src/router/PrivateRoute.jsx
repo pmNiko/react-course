@@ -7,8 +7,6 @@ export const PrivateRoute = ({ children }) => {
   const { logged } = useContext(AuthContext);
   const { pathname, search } = useLocation();
 
-  console.log("re-render");
-
   useEffect(() => {
     localStorage.setItem("lastPath", pathname + search);
   }, [pathname, search]);

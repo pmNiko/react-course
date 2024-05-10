@@ -1,7 +1,5 @@
 import { types } from "@auth/types";
 
-
-
 // Acciones para el context
 export const authReducer = ( state = {}, action ) => {
 
