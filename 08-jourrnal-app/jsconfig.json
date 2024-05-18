@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "@/*": [
+          "./src/*"
+        ],
+        "@auth/*": [
+          "./src/auth/*"
+        ],
+        "@journal/*": [
+          "./src/journal/*"
+        ],
+        "@router/*": [
+          "./src/router/*"
+        ],
+        "@theme/*": [
+          "./src/theme/*"
+        ],
+      }
+    }
+  }
