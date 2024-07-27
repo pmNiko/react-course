@@ -7,7 +7,7 @@ const STATUS = {
 };
 
 const initialState = {
-  status: STATUS.No_Authenticated,
+  status: STATUS.Checking,
   uid: null,
   email: null,
   displayName: null,
@@ -30,7 +30,7 @@ export const authSlice = createSlice({
       state.status = STATUS.Authenticated;
     },
     logout: (state, action) => {
-      state.errorMessage = action.payload;
+      initialState, (state.errorMessage = action.payload);
       state.status = STATUS.No_Authenticated;
     },
     checkingCredentials: (state) => {

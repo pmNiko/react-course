@@ -1,22 +1,25 @@
-import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
-import { Google, Password } from '@mui/icons-material';
+import { useForm } from '@/hooks';
 import {
+  startGoogleSignIn,
+  startUserEmailAndPasswordSignIn,
+} from '@/store/auth';
+import { AuthLayout } from '@auth/layout';
+import { AuthPaths } from '@auth/paths';
+import { Google } from '@mui/icons-material';
+import {
+  Alert,
   Button,
-  CircularProgress,
   Grid,
   Link,
   TextField,
   Typography,
 } from '@mui/material';
-import { AuthPaths } from '@auth/paths';
-import { AuthLayout } from '@auth/layout';
-import { useForm } from '@/hooks';
-import { checkingAuthentication, startGoogleSignIn } from '@/store/auth';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const LoginPage = () => {
-  const { status } = useSelector((state) => state.auth);
+  const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { email, password, onInputChange, formState } = useForm({
     email: 'nikolas090189@gmail.com',
@@ -27,8 +30,8 @@ export const LoginPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(checkingAuthentication());
     console.log(formState);
+    dispatch(startUserEmailAndPasswordSignIn(formState));
   };
 
   const onGoogleSignIn = () => {
@@ -62,6 +65,17 @@ export const LoginPage = () => {
               value={password}
               onChange={onInputChange}
             />
+          </Grid>
+
+          <Grid container mt={2}>
+            <Grid item xs={12} display={!!errorMessage ? '' : 'none'}>
+              <Alert
+                sx={{ display: errorMessage ? 'show' : 'none' }}
+                severity="error"
+              >
+                {errorMessage}
+              </Alert>
+            </Grid>
           </Grid>
 
           {/* Grid buttons */}

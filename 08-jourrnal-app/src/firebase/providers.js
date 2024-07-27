@@ -1,8 +1,15 @@
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { FirebaseAuth } from './config';
 
 const googleProvider = new GoogleAuthProvider();
 
+// ** ------------- SignIn with Google ---------------- */
 export const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(FirebaseAuth, googleProvider);
@@ -27,6 +34,69 @@ export const signInWithGoogle = async () => {
       ok: false,
       errorCode,
       errorMessage,
+    };
+  }
+};
+
+// ** ------------- Register with Email and Password ---------------- */
+export const registerUserWithEmailPassword = async ({
+  email,
+  password,
+  displayName,
+}) => {
+  try {
+    const resp = await createUserWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+    // console.log(resp.user);
+    const { uid, photoURL } = resp.user;
+
+    // actualizamos el displayName en Firebase
+    await updateProfile(FirebaseAuth.currentUser, { displayName });
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+      errorMessage: error.message,
+    };
+  }
+};
+
+// ** ------------- SignIn with Email and Password ---------------- */
+export const signInUserWithEmailAndPassword = async ({ email, password }) => {
+  try {
+    const resp = await signInWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL, email: emailResp, displayName } = resp.user;
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email: emailResp,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+      errorMessage: error.message,
     };
   }
 };
