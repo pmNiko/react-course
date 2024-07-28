@@ -1,4 +1,4 @@
-import { TurnedInNot } from "@mui/icons-material";
+import { TurnedInNot } from '@mui/icons-material';
 import {
   Box,
   Divider,
@@ -11,31 +11,34 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
+import { useSelector } from 'react-redux';
 
 export const Sidebar = ({ drawerWidth = 240 }) => {
+  const { displayName } = useSelector((state) => state.auth);
+
   return (
     <Box
-      component={"nav"}
+      component={'nav'}
       sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
     >
       <Drawer
         variant="permanent"
         open
         sx={{
-          display: { xs: "block" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          display: { xs: 'block' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component={"div"}>
-            Nikodev
+          <Typography variant="h6" noWrap component={'div'}>
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
 
         <List>
-          {["Enero", "Febrero", "Marzo", "Abril"].map((month) => (
+          {['Enero', 'Febrero', 'Marzo', 'Abril'].map((month) => (
             <ListItem key={month} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -44,7 +47,7 @@ export const Sidebar = ({ drawerWidth = 240 }) => {
                 <Grid container>
                   <ListItemText primary={month} />
                   <ListItemText
-                    secondary={"Lorem ipsum, dolor sit amet consectetur ."}
+                    secondary={'Lorem ipsum, dolor sit amet consectetur .'}
                   />
                 </Grid>
               </ListItemButton>

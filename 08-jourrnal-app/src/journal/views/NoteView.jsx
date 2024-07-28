@@ -1,10 +1,11 @@
-import { SaveOutlined } from "@mui/icons-material";
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import { ImageGallery } from "@journal/components";
+import { SaveOutlined } from '@mui/icons-material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import { ImageGallery } from '@journal/components';
 
 export const NoteView = () => {
   return (
     <Grid
+      className="animate__animated animate__fadeIn animate__faster"
       container
       direction="row"
       justifyContent="space-between"
@@ -31,7 +32,7 @@ export const NoteView = () => {
           fullWidth
           label="Título"
           placeholder="Ingrese un título"
-          sx={{ b: "none", mb: 1 }}
+          sx={{ b: 'none', mb: 1 }}
         />
 
         <TextField
@@ -41,7 +42,7 @@ export const NoteView = () => {
           multiline
           placeholder="¿Que sucedio en el día de hoy?"
           minRows={5}
-          sx={{ b: "none", mt: 2, mb: 1 }}
+          sx={{ b: 'none', mt: 2, mb: 1 }}
         />
       </Grid>
 

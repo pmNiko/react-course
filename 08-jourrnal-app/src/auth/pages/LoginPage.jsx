@@ -22,15 +22,14 @@ export const LoginPage = () => {
   const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { email, password, onInputChange, formState } = useForm({
-    email: 'nikolas090189@gmail.com',
-    password: 'qwerty135678',
+    email: '',
+    password: '',
   });
 
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formState);
     dispatch(startUserEmailAndPasswordSignIn(formState));
   };
 
@@ -41,7 +40,10 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container mt={1}>
           <Grid item xs={12} mt={2}>
             <TextField

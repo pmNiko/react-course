@@ -1,23 +1,33 @@
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom';
 import { AuthRoutes } from '@/auth/routes';
+import { useCheckAuth } from '@/hooks';
 import { JournalRoutes } from '@/journal/routes/JournalRoutes';
-import { RootPaths } from '@/paths';
 import { CheckingAuth } from '@/ui/components';
-import { useSelector } from 'react-redux';
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { RootPaths } from '@/paths';
 
 export const AppRouter = () => {
-  const { status } = useSelector((state) => state.auth);
+  const status = useCheckAuth();
 
   if (status === 'checking') return <CheckingAuth />;
 
   return (
     <Router>
       <Routes>
-        {/* Login y registro */}
-        <Route path={RootPaths.AUTH + '/*'} element={<AuthRoutes />} />
+        {status === 'authenticated' ? (
+          <Route path={RootPaths.JOURNAL + '*'} element={<JournalRoutes />} />
+        ) : (
+          <Route path={RootPaths.AUTH + '/*'} element={<AuthRoutes />} />
+        )}
 
-        {/* Journal App */}
-        <Route path={RootPaths.JOURNAL + '*'} element={<JournalRoutes />} />
+        <Route
+          path={'/*'}
+          element={<Navigate to={RootPaths.AUTH + '/login'} />}
+        />
       </Routes>
     </Router>
   );

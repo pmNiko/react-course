@@ -100,3 +100,20 @@ export const signInUserWithEmailAndPassword = async ({ email, password }) => {
     };
   }
 };
+
+// ** ------------- SignIn with Email and Password ---------------- */
+export const signOut = async () => {
+  try {
+    await FirebaseAuth.signOut();
+
+    return {
+      ok: true,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+      errorMessage: error.message,
+    };
+  }
+};
