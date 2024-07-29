@@ -5,6 +5,7 @@ import {
   signOut,
 } from '@/firebase/providers';
 import { checkingCredentials, login, logout } from './authSlice';
+import { clearNotesLogout } from '../journal';
 
 export const checkingAuthentication = () => {
   return async (dispatch) => {
@@ -71,6 +72,8 @@ export const startSignOut = () => {
     dispatch(checkingCredentials());
 
     const result = await signOut();
+
+    dispatch(clearNotesLogout());
 
     result.ok ? dispatch(logout()) : dispatch(logout(result.errorMessage));
   };
