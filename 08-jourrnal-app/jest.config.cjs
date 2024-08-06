@@ -2,6 +2,9 @@
 module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   setupFiles: ['./jest.setup.js'],
+  transformIgnorePatterns: [],
+  // transformIgnorePatterns: ['/node_modules/(?!@firebase)'],
+
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@auth/(.*)$': '<rootDir>/src/auth/$1',
