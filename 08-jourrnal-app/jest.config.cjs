@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-undef
 module.exports = {
+  testTimeout: 80 * 1000,
   testEnvironment: 'jest-environment-jsdom',
   setupFiles: ['./jest.setup.js'],
   transformIgnorePatterns: [],

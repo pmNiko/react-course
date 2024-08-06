@@ -15,6 +15,7 @@ import { fileUpload, loadNotes } from '@/helpers';
 export const startNewNote = () => {
   return async (dispatch, getState) => {
     dispatch(savingNewNote());
+
     const { uid } = getState().auth;
 
     const newNote = {
@@ -36,9 +37,9 @@ export const startNewNote = () => {
 
 export const startLoadingNotes = () => {
   return async (dispatch, getState) => {
-    const { uid } = getState().auth;
+    if (!getState()?.auth.uid) throw new Error('User ID not available!');
 
-    if (!uid) throw new Error('User ID not available!');
+    const { uid } = getState()?.auth;
 
     const notes = await loadNotes(uid);
 
