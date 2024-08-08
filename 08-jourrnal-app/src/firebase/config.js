@@ -2,9 +2,11 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
-
+import { getEnvironments } from '@/helpers/getEnvironments';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+const env = getEnvironments();
 
 //! Prod config
 // const firebaseConfig = {
@@ -17,14 +19,24 @@ import { getFirestore } from 'firebase/firestore/lite';
 // };
 
 //? Testing configuration
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyCEQ6QPNJsn65qSc1VcjSU_37IW29rfcxA',
+//   authDomain: 'zustand-storage-36683.firebaseapp.com',
+//   databaseURL: 'https://zustand-storage-36683-default-rtdb.firebaseio.com',
+//   projectId: 'zustand-storage-36683',
+//   storageBucket: 'zustand-storage-36683.appspot.com',
+//   messagingSenderId: '425789153392',
+//   appId: '1:425789153392:web:887ef812b59555df9a14b5',
+// };
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyCEQ6QPNJsn65qSc1VcjSU_37IW29rfcxA',
-  authDomain: 'zustand-storage-36683.firebaseapp.com',
-  databaseURL: 'https://zustand-storage-36683-default-rtdb.firebaseio.com',
-  projectId: 'zustand-storage-36683',
-  storageBucket: 'zustand-storage-36683.appspot.com',
-  messagingSenderId: '425789153392',
-  appId: '1:425789153392:web:887ef812b59555df9a14b5',
+  apiKey: env.VITE_APIKEY,
+  authDomain: env.VITE_AUTHDOMAIN,
+  databaseURL: env.VITE_DATABASEURL,
+  projectId: env.VITE_PROJECTID,
+  storageBucket: env.VITE_STORAGEBUCKET,
+  messagingSenderId: env.VITE_MESSAGINGSENDERID,
+  appId: env.VITE_APPID,
 };
 
 // Initialize Firebase

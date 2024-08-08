@@ -11,7 +11,7 @@ cloudinary.config({
 const imgUrl =
   'https://plus.unsplash.com/premium_photo-1669829646756-083a328c0abb?w=500';
 
-describe.skip('Pruebas en fileupload', () => {
+describe('Pruebas en fileupload', () => {
   test('Deberia subir la imagen a cloudinary', async () => {
     const resp = await fetch(imgUrl);
 
