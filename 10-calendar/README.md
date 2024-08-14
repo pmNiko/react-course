@@ -1,8 +1,16 @@
-# React + Vite
+### Calendar app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Development
 
-Currently, two official plugins are available:
+## Dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+1. Instalar dependencias `yarn `
+2. Clonar el archivo .env.template y renombrarlo a .env
+3. Cambiar las variables de entorno acorde
+4. Correr el server con `yarn dev`
+
+```sh
+    VITE_API_URL=http://localhost:4001/api
+```
