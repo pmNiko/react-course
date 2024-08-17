@@ -1,21 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addHours } from 'date-fns';
-
-// const tempEvent = {
-//   _id: new Date().getTime(),
-//   title: 'Cumpleaños del Jefe',
-//   notes: 'Se debe comprar un regalo.',
-//   start: new Date(),
-//   end: addHours(new Date(), 2),
-//   bgColor: '#fafafa',
-//   user: {
-//     _id: '123',
-//     name: 'Nikolas',
-//   },
-// };
 
 const initialState = {
-  // events: [tempEvent],
   events: [],
   isLoadingEvents: true,
   activeEvent: null,

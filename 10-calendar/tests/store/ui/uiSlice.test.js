@@ -1,0 +1,31 @@
+import {
+  onCloseDateModal,
+  onOpenDateModal,
+  uiSlice,
+} from '../../../src/store/ui/uiSlice';
+
+describe('Pruebas en el UiSlice', () => {
+  test('Debe de regresar el estado por defecto', () => {
+    expect(uiSlice.getInitialState()).toEqual({ isDateModalOpen: false });
+    expect(uiSlice.getInitialState().isDateModalOpen).toBeFalsy();
+  });
+
+  test('Debe de cambiar el "isDateModalOpen" a true', () => {
+    let state = uiSlice.getInitialState();
+
+    state = uiSlice.reducer(state, onOpenDateModal());
+
+    expect(state.isDateModalOpen).toBeTruthy();
+  });
+
+  test('Debe de cambiar el "isDateModalOpen" a false', () => {
+    let state = uiSlice.getInitialState();
+    state = uiSlice.reducer(state, onOpenDateModal());
+
+    expect(state.isDateModalOpen).toBeTruthy();
+
+    state = uiSlice.reducer(state, onCloseDateModal());
+
+    expect(state.isDateModalOpen).toBeFalsy();
+  });
+});

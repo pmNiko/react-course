@@ -6,6 +6,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 import { useCalendarModal } from '../../hooks/useCalendarModal';
 import './modal.css';
+import { getEnvVariables } from '../../../helpers';
 
 registerLocale('es', es);
 
@@ -21,7 +22,9 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#root');
+if (getEnvVariables().VITE_MODE !== 'test') {
+  Modal.setAppElement('#root');
+}
 
 export const CalendarModal = () => {
   const {
