@@ -6,6 +6,7 @@ import {
   onLogout,
 } from '../store/auth/authSlice';
 import { calendarApi } from '../api';
+import { onLogoutCalendar } from '../store/calendar/calendarSlice';
 
 export const useAuthStore = () => {
   const dispatch = useDispatch();
@@ -52,17 +53,19 @@ export const useAuthStore = () => {
     }
   };
 
-  const checAuthToken = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) return dispatch(onLogout());
-
+  const checkAuthToken = async () => {
     try {
-      const resp = await calendarApi.get('/auth/renew');
-      const { uid, name, token } = resp.data;
+      const token = localStorage.getItem('token');
+
+      if (!token) return dispatch(onLogout());
+
+      const resp = await calendarApi.post('/auth/renew');
+      const data = resp.data;
       localStorage.setItem('token', token);
       localStorage.setItem('token-init-date', new Date().getTime());
-      dispatch(onLogin({ uid, name, email }));
+      dispatch(onLogin({ uid: data.uid, name: data.name }));
     } catch (error) {
+      console.log(error);
       localStorage.clear();
       dispatch(onLogout());
     }
@@ -70,6 +73,7 @@ export const useAuthStore = () => {
 
   const onSignOut = () => {
     localStorage.clear();
+    dispatch(onLogoutCalendar());
     dispatch(onLogout());
   };
 
@@ -80,7 +84,7 @@ export const useAuthStore = () => {
     user,
 
     //* Methods
-    checAuthToken,
+    checkAuthToken,
     startSignIn,
     startSignUp,
     onSignOut,
