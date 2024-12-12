@@ -2,6 +2,7 @@ import { FC, use } from "react";
 import { Planet } from "../interfaces/planet.interface";
 import { EditPlanetForm } from "./ui/EditPlanetForm";
 import { PlanetList } from "./ui/PlanetList";
+import { createPlanetAction } from "../actions/create-planet.action";
 
 interface Props {
   getPlanets: Promise<Planet[]>;
@@ -26,8 +27,9 @@ const Planets: FC<Props> = ({ getPlanets }) => {
   //     });
   // }, []);
 
-  const handleAddPlanet = (planet: Partial<Planet>) => {
-    console.log(planet);
+  const handleAddPlanet = async (planet: Partial<Planet>) => {
+    const newPlanet = await createPlanetAction(planet);
+    console.log({ newPlanet });
   };
 
   return (
